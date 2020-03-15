@@ -6,14 +6,23 @@ public class PlayerMovement : MonoBehaviour
 {
     [HideInInspector] public static PlayerMovement playerMovement;
 
+    [Header("General Movement")]
     public float speed;
+
+    [Header("Jump Stats")]
     public float jumpForce;
-    public float dashForce;
     public float fallMultiplier;
     public int jumpCount;
     public bool isGrounded = false;
     public Transform GroundCheck1;
     public LayerMask groundLayer;
+
+    [Header("Dash Stats")]
+    public float dashForce;
+    private float dashTime;
+    public float startDashTime;
+    [HideInInspector]public int dashDirection;
+    public EchoEffect echo;
 
     private Rigidbody2D rigi;
 
@@ -25,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigi = GetComponent<Rigidbody2D>();
+        echo = GetComponent<EchoEffect>();
+        echo.enabled = false;
     }
     
     void Update()
@@ -39,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        Dash();
     }
 
     public void Move(float xAxis)
@@ -52,8 +63,48 @@ public class PlayerMovement : MonoBehaviour
         rigi.velocity = Vector2.up * jumpForce;
     }
 
-    public void Dash(float xAxis)
+    public void Dash()
     {
-        rigi.AddForce(new Vector2(xAxis * dashForce, rigi.velocity.y), ForceMode2D.Impulse);
+        if (dashDirection != 0)
+        {
+            echo.enabled = true;
+            if (dashTime <= 0)
+            {
+                dashDirection = 0;
+                dashTime = startDashTime;
+                rigi.velocity = Vector2.zero;
+            }
+            else
+            {
+                dashTime -= Time.deltaTime;
+                if (dashDirection == 1)
+                    rigi.velocity = Vector2.left * dashForce;           // Dash Left
+                else if (dashDirection == 2)
+                    rigi.velocity = Vector2.right * dashForce;          // Dash Right
+                else if (dashDirection == 3)
+                    rigi.velocity = Vector2.up * dashForce;             // Dash Up
+                else if (dashDirection == 4)
+                    rigi.velocity = Vector2.down * dashForce;           // Dash Down
+
+                else if (dashDirection == 5)
+                    rigi.velocity = new Vector2(1, 1) * dashForce;      // Dash Up Right
+                else if (dashDirection == 6)
+                    rigi.velocity = new Vector2(1, -1) * dashForce;     // Dash Down Right
+                else if (dashDirection == 7)
+                    rigi.velocity = new Vector2(-1, -1) * dashForce;    // Dash Down Left
+                else if (dashDirection == 8)
+                    rigi.velocity = new Vector2(-1, 1) * dashForce;     // Dash Up Left
+            }
+        }
+        else
+        {
+            echo.enabled = false;
+        }
+    }
+
+    public IEnumerator DashSpriteDuplication()
+    {
+        FeedbackManager.feedbackManager.ShakeCamera(FeedbackManager.feedbackManager.dashNoise);
+        yield return null;
     }
 }
