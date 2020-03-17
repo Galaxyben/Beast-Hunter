@@ -30,6 +30,15 @@ public class PlayerStats : MonoBehaviour
         
     }
 
+    public void ReceiveHit(int _amount)
+    {
+        if(!inmunity)
+        {
+            hp -= _amount;
+            SetInmunity(1.5f);
+        }
+    }
+
     public IEnumerator SetInmunity(float time)
     {
         inmunity = true;

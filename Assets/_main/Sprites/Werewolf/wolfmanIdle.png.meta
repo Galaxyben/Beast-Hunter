@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: 5801906420403054206
     second: wolfmanIdle_3
+  - first:
+      213: -1473661851884933109
+    second: wolfmanIdle_0
+  - first:
+      213: -5617724449512942681
+    second: wolfmanIdle_1
+  - first:
+      213: 3025323374059919119
+    second: wolfmanIdle_2
+  - first:
+      213: -8592464507333950320
+    second: wolfmanIdle_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -57,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 35
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,10 +137,10 @@ TextureImporter:
       name: wolfmanIdle_0
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 0
-        width: 31
-        height: 46
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,8 +148,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3ed212d97347b140800000000000000
-      internalID: 4735327723697921594
+      spriteID: b00ba5f7a508c8be0800000000000000
+      internalID: -1473661851884933109
       vertices: []
       indices: 
       edges: []
@@ -146,10 +158,10 @@ TextureImporter:
       name: wolfmanIdle_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 31
-        height: 45
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,8 +169,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8fbb9db99a74f800800000000000000
-      internalID: 645275447350509450
+      spriteID: 7a311cc8065d902b0800000000000000
+      internalID: -5617724449512942681
       vertices: []
       indices: 
       edges: []
@@ -167,10 +179,10 @@ TextureImporter:
       name: wolfmanIdle_2
       rect:
         serializedVersion: 2
-        x: 144
+        x: 128
         y: 0
-        width: 31
-        height: 45
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 618354d5cafebb960800000000000000
-      internalID: 7618946718205556758
+      spriteID: f071781749b1cf920800000000000000
+      internalID: 3025323374059919119
       vertices: []
       indices: 
       edges: []
@@ -188,10 +200,10 @@ TextureImporter:
       name: wolfmanIdle_3
       rect:
         serializedVersion: 2
-        x: 208
+        x: 192
         y: 0
-        width: 31
-        height: 44
+        width: 64
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,8 +211,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e76ae284623848050800000000000000
-      internalID: 5801906420403054206
+      spriteID: 094453f2e0f61c880800000000000000
+      internalID: -8592464507333950320
       vertices: []
       indices: 
       edges: []

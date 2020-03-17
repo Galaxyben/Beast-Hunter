@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public IEnumerator DashSpriteDuplication()
+    public IEnumerator StartDash()
     {
         FeedbackManager.feedbackManager.ShakeCamera(FeedbackManager.feedbackManager.dashNoise);
         yield return null;

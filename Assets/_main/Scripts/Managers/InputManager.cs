@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour
             }
             if(Input.GetButtonDown("Dash"))
             {
-                PlayerMovement.playerMovement.StartCoroutine(PlayerMovement.playerMovement.DashSpriteDuplication());
+                PlayerMovement.playerMovement.StartCoroutine(PlayerMovement.playerMovement.StartDash());
                 if (xAxis < 0 && yAxis == 0)
                     PlayerMovement.playerMovement.dashDirection = 1;
                 else if (xAxis > 0 && yAxis == 0)

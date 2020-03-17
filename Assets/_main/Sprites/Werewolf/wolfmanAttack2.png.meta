@@ -1,43 +1,31 @@
 fileFormatVersion: 2
-guid: be1b4d2e8f9af384680a3e0d114f2755
+guid: 1cf0f920d97f9db4b8b2ba10808d1617
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8794008255555088844
-    second: wolfmanRun_0
+      213: -7825524687973400586
+    second: wolfmanAttack2_0
   - first:
-      213: 1967401768103011160
-    second: wolfmanRun_1
+      213: -394466546518850655
+    second: wolfmanAttack2_1
   - first:
-      213: 8010439693373378673
-    second: wolfmanRun_2
+      213: -2567767331374296133
+    second: wolfmanAttack2_2
   - first:
-      213: 6358560069875126865
-    second: wolfmanRun_3
+      213: 8972806000948040520
+    second: wolfmanAttack2_3
   - first:
-      213: -4785694160185866452
-    second: wolfmanRun_4
+      213: -4000591959918576094
+    second: wolfmanAttack2_0
   - first:
-      213: 5682255171146357023
-    second: wolfmanRun_5
+      213: -2963236956359180920
+    second: wolfmanAttack2_1
   - first:
-      213: -4022751197021093395
-    second: wolfmanRun_0
+      213: 2309127950341781796
+    second: wolfmanAttack2_2
   - first:
-      213: 4367511992676705555
-    second: wolfmanRun_1
-  - first:
-      213: -6097104146601857156
-    second: wolfmanRun_2
-  - first:
-      213: 719942811882187676
-    second: wolfmanRun_3
-  - first:
-      213: -76367576615066868
-    second: wolfmanRun_4
-  - first:
-      213: -8568652123132432042
-    second: wolfmanRun_5
+      213: 3889780193045922800
+    second: wolfmanAttack2_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -146,127 +134,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wolfmanRun_0
+      name: wolfmanAttack2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 48
-      alignment: 0
+        width: 128
+        height: 80
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de1c7c989115c28c0800000000000000
-      internalID: -4022751197021093395
+      spriteID: 22ef4c9feca0b78c0800000000000000
+      internalID: -4000591959918576094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolfmanRun_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 315e0cb64058c9c30800000000000000
-      internalID: 4367511992676705555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolfmanRun_2
+      name: wolfmanAttack2_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 48
-      alignment: 0
+        width: 128
+        height: 80
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7f2c3f151cb26ba0800000000000000
-      internalID: -6097104146601857156
+      spriteID: 88db6e620b770e6d0800000000000000
+      internalID: -2963236956359180920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolfmanRun_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9b65d84c20cdf900800000000000000
-      internalID: 719942811882187676
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wolfmanRun_4
+      name: wolfmanAttack2_2
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
-        height: 48
-      alignment: 0
+        width: 128
+        height: 80
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c03608bf710b0fef0800000000000000
-      internalID: -76367576615066868
+      spriteID: 4293c05f2abab0020800000000000000
+      internalID: 2309127950341781796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wolfmanRun_5
+      name: wolfmanAttack2_3
       rect:
         serializedVersion: 2
-        x: 320
+        x: 384
         y: 0
-        width: 64
-        height: 48
-      alignment: 0
+        width: 128
+        height: 80
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6517bccea48061980800000000000000
-      internalID: -8568652123132432042
+      spriteID: 0f34ad40a764bf530800000000000000
+      internalID: 3889780193045922800
       vertices: []
       indices: 
       edges: []
