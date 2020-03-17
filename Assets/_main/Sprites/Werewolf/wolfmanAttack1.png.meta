@@ -32,6 +32,9 @@ TextureImporter:
   - first:
       213: -3998113307134183149
     second: wolfmanAttack1_5
+  - first:
+      213: 9132212087381319750
+    second: wolfmanAttack1_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -147,8 +150,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 80
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,8 +171,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 80
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,8 +192,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 80
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,8 +213,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 80
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
