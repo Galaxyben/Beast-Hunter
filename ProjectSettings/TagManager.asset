@@ -9,6 +9,7 @@ TagManager:
   - Zombie
   - Enemy
   - EnemyCollider
+  - Pierce
   layers:
   - Default
   - TransparentFX

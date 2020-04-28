@@ -36,33 +36,26 @@ public class FSM_Manwolf : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         eb = GetComponent<EnemyBasics>();
-        anim.SetTrigger("Transform");
 
-        m_currentStage = Stage.WOLF;
+        m_currentStage = Stage.MAN;
         m_currentState = States.IDLE;
     }
 
     void Update()
     {
-        moveDirection = Vector2.zero;
-        if(eb.distanceFromTarget < 12f)
-        {
-            Vector2 direction = eb.target.transform.position - transform.position;
-            direction.y = 0;
-            if(direction.magnitude > 0.8f)
-            {
-                moveDirection = direction.normalized;
-            }
-        }
         FSM();
     }
 
     private void FixedUpdate()
     {
-        if (m_currentState == States.FOLLOW)
+        if (eb.distanceFromTarget < 12f)
         {
-            eb.rigi.velocity = new Vector2(moveDirection.x * eb.moveSpeed * Time.deltaTime, eb.rigi.velocity.y);
-            anim.SetFloat("Speed", eb.rigi.velocity.x);
+            Vector2 direction = eb.target.transform.position - transform.position;
+            direction.y = 0;
+            if (direction.magnitude > 0.8f)
+            {
+                moveDirection = direction.normalized;
+            }
         }
     }
 
@@ -73,6 +66,8 @@ public class FSM_Manwolf : MonoBehaviour
             case States.IDLE:
                 if (m_enter)
                 {
+                    anim.SetFloat("Speed", 0);
+                    eb.rigi.velocity = Vector2.zero;
                     m_counter = 0;
                     if (m_currentStage == Stage.MAN)
                     {
@@ -86,14 +81,17 @@ public class FSM_Manwolf : MonoBehaviour
                 }
 
                 m_counter++;
-                if (m_counter >= 250)
+                if (m_counter >= 150)
                 {
-                    m_currentState = States.FOLLOW;
+                    ChangeState(States.FOLLOW);
                 }
 
                 if (m_currentStage == Stage.MAN)
                 {
-
+                    if (eb.hp < 50f)
+                    {
+                        ChangeState(States.TRANSFORMING);
+                    }
                 }
                 else
                 {
@@ -116,6 +114,7 @@ public class FSM_Manwolf : MonoBehaviour
             case States.FOLLOW:
                 if (m_enter)
                 {
+                    anim.SetFloat("Speed", 1);
                     if (m_currentStage == Stage.MAN)
                     {
 
@@ -126,21 +125,26 @@ public class FSM_Manwolf : MonoBehaviour
                     }
                     m_enter = false;
                 }
+                anim.SetFloat("Speed", 1);
+
+                if (eb.distanceFromTarget < 1)
+                {
+                    ChangeState(Random.Range(1, 4));
+                }
 
                 if (m_currentStage == Stage.MAN)
                 {
-
+                    eb.rigi.velocity = new Vector2(moveDirection.x * eb.moveSpeed, eb.rigi.velocity.y);
                 }
                 else
                 {
-                    if(eb.distanceFromTarget < 1)
-                    {
-                        ChangeState(Random.Range(3, 4));
-                    }
+                    eb.rigi.velocity = new Vector2(moveDirection.x * (eb.moveSpeed * 1.25f), eb.rigi.velocity.y);
+
                 }
 
                 if (m_currentState != States.FOLLOW)
                 {
+                    anim.SetFloat("Speed", 0);
                     if (m_currentStage == Stage.MAN)
                     {
 
@@ -155,45 +159,8 @@ public class FSM_Manwolf : MonoBehaviour
             case States.MELEE_ATTACK:
                 if (m_enter)
                 {
-                    anim.SetTrigger("Attack");
-                    m_counter = 0;
-                    if (m_currentStage == Stage.MAN)
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-                    m_enter = false;
-                }
-
-
-                if (m_currentStage == Stage.MAN)
-                {
-
-                }
-                else
-                {
-
-                }
-
-                m_counter++;
-                if (m_counter >= 250)
-                {
-                    m_currentState = States.IDLE;
-                }
-
-                if (m_currentState != States.MELEE_ATTACK)
-                {
-
-                    punchBox.enabled = false;
-                    m_enter = true;
-                }
-                break;
-            case States.AREA_ATTACK:
-                if (m_enter)
-                {
+                    eb.rigi.velocity = Vector2.zero;
+                    //anim.SetTrigger("Attack");
                     anim.SetTrigger("Area");
                     m_counter = 0;
                     if (m_currentStage == Stage.MAN)
@@ -218,29 +185,25 @@ public class FSM_Manwolf : MonoBehaviour
                 }
 
                 m_counter++;
-                if (m_counter >= 250)
+                if (m_counter >= 150)
                 {
                     m_currentState = States.IDLE;
                 }
 
-                if (m_currentState != States.AREA_ATTACK)
+                if (m_currentState != States.MELEE_ATTACK)
                 {
-                    if (m_currentStage == Stage.MAN)
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
+                    anim.SetFloat("Speed", 0);
+                    punchBox.enabled = false;
                     m_enter = true;
                 }
                 break;
-            case States.TRANSFORMING:
+            case States.AREA_ATTACK:
                 if (m_enter)
                 {
-                    punchBox.GetComponent<EnemyAttackBox>().damage = punchBox.GetComponent<EnemyAttackBox>().damage * 2;
-                    areaBox.GetComponent<EnemyAttackBox>().damage = areaBox.GetComponent<EnemyAttackBox>().damage * 2;
+                    anim.SetTrigger("Area");
+                    StartCoroutine(eb.SetInmunity(1f));
+                    eb.rigi.velocity = Vector2.zero;
+                    m_counter = 0;
                     if (m_currentStage == Stage.MAN)
                     {
 
@@ -252,6 +215,7 @@ public class FSM_Manwolf : MonoBehaviour
                     m_enter = false;
                 }
 
+
                 if (m_currentStage == Stage.MAN)
                 {
 
@@ -261,16 +225,42 @@ public class FSM_Manwolf : MonoBehaviour
 
                 }
 
-                if (m_currentState != States.TRANSFORMING)
+                m_counter++;
+                if (m_counter >= 150)
                 {
+                    m_currentState = States.IDLE;
+                }
+
+                if (m_currentState != States.AREA_ATTACK)
+                {
+                    anim.SetFloat("Speed", 0);
+                    areaBox.enabled = false;
+                    m_enter = true;
+                }
+                break;
+            case States.TRANSFORMING:
+                if (m_enter)
+                {
+                    m_counter = 0;
+                    StartCoroutine(eb.SetInmunity(1f));
                     if (m_currentStage == Stage.MAN)
                     {
-
+                        anim.SetTrigger("Transform");
+                        m_currentStage = Stage.WOLF;
+                        punchBox.GetComponent<EnemyAttackBox>().damage = punchBox.GetComponent<EnemyAttackBox>().damage * 2;
+                        areaBox.GetComponent<EnemyAttackBox>().damage = areaBox.GetComponent<EnemyAttackBox>().damage * 2;
                     }
-                    else
-                    {
+                    m_enter = false;
+                }
 
-                    }
+                m_counter++;
+                if (m_counter >= 150)
+                {
+                    ChangeState(States.IDLE);
+                }
+
+                if (m_currentState != States.TRANSFORMING)
+                {
                     m_enter = true;
                 }
                 break;

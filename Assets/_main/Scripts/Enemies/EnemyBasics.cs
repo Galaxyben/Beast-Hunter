@@ -52,16 +52,37 @@ public class EnemyBasics : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("HitCollider"))
+            StartCoroutine(GetHit(collision.GetComponent<ItemDamage>().damage));
+        else if(collision.CompareTag("Pierce"))
+            StartCoroutine(GetPierceShot((int)collision.GetComponent<SCR_ProjectileBehaviour>().projectile.damage));
+    }
+
+    public IEnumerator GetHit(int damage)
+    {
+        if(!inmunity)
         {
-            StartCoroutine(GetHit());
+            spriteRend.color = Color.red;
+            hp -= damage;
+            FeedbackManager.feedbackManager.StartCoroutine(FeedbackManager.feedbackManager.FB_Hit());
+            yield return new WaitForSeconds(0.2f);
+            spriteRend.color = Color.white;
         }
     }
 
-    public IEnumerator GetHit()
+    public IEnumerator GetPierceShot(int damage)
     {
         spriteRend.color = Color.red;
-        FeedbackManager.feedbackManager.StartCoroutine(FeedbackManager.feedbackManager.FB_Hit());
+        hp -= damage;
         yield return new WaitForSeconds(0.2f);
+        spriteRend.color = Color.white;
+    }
+
+    public IEnumerator SetInmunity(float time)
+    {
+        spriteRend.color = Color.blue;
+        inmunity = true;
+        yield return new WaitForSeconds(time);
+        inmunity = false;
         spriteRend.color = Color.white;
     }
 }

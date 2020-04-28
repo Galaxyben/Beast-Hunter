@@ -18,13 +18,15 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     [Header("Dash Stats")]
+    public float dashChargeTime;
+    public bool dashEnabled;
     public float dashForce;
     private float dashTime;
     public float startDashTime;
     [HideInInspector]public int dashDirection;
     public EchoEffect echo;
 
-    private Rigidbody2D rigi;
+    [HideInInspector]public Rigidbody2D rigi;
 
     private void Awake()
     {
@@ -56,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
     public void Move(float xAxis)
     {
         rigi.velocity = new Vector2(xAxis * speed * Time.deltaTime, rigi.velocity.y);
+        if(xAxis > 0)
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+        else if(xAxis < 0)
+            transform.rotation = new Quaternion(0, 180, 0, 0);
     }
 
     public void Jump()

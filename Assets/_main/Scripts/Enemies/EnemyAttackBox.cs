@@ -12,6 +12,7 @@ public class EnemyAttackBox : MonoBehaviour
         {
             FeedbackManager.feedbackManager.FB_Hit();
             PlayerStats.playerStats.ReceiveHit(damage);
+            PlayerStats.playerStats.StartCoroutine(PlayerStats.playerStats.Knockback(0.02f, 350f, new Vector2(InputManager.inputManager.xAxis, InputManager.inputManager.yAxis)));
         }
     }
 }
